@@ -68,6 +68,7 @@ function collectPosts(data, postTypes, config) {
 				frontmatter: {
 					title: getPostTitle(post),
 					date: getPostDate(post),
+					sidebar_position: getPostOrder(post),
 					categories: getCategories(post),
 					tags: getTags(post)
 				},
@@ -119,6 +120,10 @@ function getPostDate(post) {
 	} else {
 		return dateTime.toISODate();
 	}
+}
+
+function getPostOrder(post) {
+	return +post.menu_order[0];
 }
 
 function getCategories(post) {
